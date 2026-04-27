@@ -43,10 +43,10 @@ def process_payout(self, payout_id):
         r = random.random()
         if r < 0.70:
             outcome = "success"
-        elif r < 0.95:
+        elif r < 0.90:
             outcome = "fail"
         else:
-            # Hang simulation (5% chance): return immediately leaving payout in
+            # Hang simulation (10% chance): return immediately leaving payout in
             # PROCESSING. retry_stuck_payouts beat task (runs every 15s) picks
             # it up after STUCK_THRESHOLD_SECONDS. DO NOT use time.sleep() —
             # that blocks a Celery worker thread and starves the pool.
@@ -95,9 +95,7 @@ def process_payout(self, payout_id):
 
 
 # How long a payout can sit in PROCESSING before being retried.
-# Low value = faster recovery for hung payouts.
-# Beat runs every 15s, so effective worst-case detection = 15 + THRESHOLD.
-STUCK_THRESHOLD_SECONDS = 10
+STUCK_THRESHOLD_SECONDS = 30
 
 
 @shared_task(ignore_result=True)

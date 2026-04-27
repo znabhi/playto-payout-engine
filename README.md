@@ -4,7 +4,7 @@ Production-grade payout engine for Playto Pay. Built with Django + DRF + Postgre
 
 ## 🎥 Demo Video
 
-https://github.com/znabhi/playto-payout-engine/raw/main/Playto%20Pay%20%E2%80%94%20Merchant%20Dashboard.mp4
+https://github.com/user-attachments/assets/add9ecf5-9893-4e96-834b-a486ad2c81fa
 
 > Also watch on Loom: [Watch the full demo →](https://www.loom.com/share/81236e5a234b4c3e92e3c1845adecc12)
 
@@ -13,6 +13,11 @@ https://github.com/znabhi/playto-payout-engine/raw/main/Playto%20Pay%20%E2%80%94
 ```bash
 git clone https://github.com/znabhi/playto-payout-engine.git
 cd playto-payout-engine
+
+# Copy environment variables
+cp backend/.env.example backend/.env
+
+# Start containers
 docker-compose up --build
 ```
 
